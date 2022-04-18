@@ -20,7 +20,7 @@ void left_motor_CW() {
   digitalWrite (left_LPWM, LOW);
   digitalWrite (left_RPWM, HIGH);
   analogWrite (left_L_EN,100);
-  Serial.println ("left CW");
+  Serial.println ("Left CW");
 }
 
 void left_motor_CCW() {
@@ -35,7 +35,7 @@ void left_motor_stop() {
   digitalWrite (left_RPWM, LOW);
   analogWrite (left_L_EN,0);
   analogWrite (left_R_EN,0);
-  Serial.println ("left Stop");
+  //Serial.println ("Left Stop");
 }
 
 // Right Motor Functions
@@ -43,14 +43,14 @@ void right_motor_CW() {
   digitalWrite (right_LPWM, LOW);
   digitalWrite (right_RPWM, HIGH);
   analogWrite (right_L_EN,100);
-  Serial.println ("right CW");
+  Serial.println ("Right CW");
 }
 
 void right_motor_CCW() {
   digitalWrite (right_LPWM, HIGH);
   digitalWrite (right_RPWM, LOW);
   analogWrite (right_L_EN,100);
-  Serial.println ("right CCW");
+  Serial.println ("Right CCW");
 }
 
 void right_motor_stop() {
@@ -58,13 +58,14 @@ void right_motor_stop() {
   digitalWrite (right_RPWM, LOW);
   analogWrite (right_L_EN,0);
   analogWrite (right_R_EN,0);
-  Serial.println ("right Stop");
+  //Serial.println ("Right Stop");
 }
 
 // Composite Motor Actions
 void motors_stop(){
   left_motor_stop();
   right_motor_stop();
+  Serial.println ("Motors Stopped");
 }
 
 void setup() {
@@ -84,6 +85,7 @@ void setup() {
 
 void loop() { 
   // Forward Action
+  Serial.println ("Drive Forward");
   left_motor_CW();
   right_motor_CW();
   delay (5000);
@@ -92,6 +94,7 @@ void loop() {
   delay (1000);
 
   // Reverse Action
+  Serial.println ("Reversing");
   left_motor_CCW();
   right_motor_CCW();
   delay (5000);
@@ -100,6 +103,7 @@ void loop() {
   delay (1000);
   
   // Left Action
+  Serial.println ("Left Turn");
   left_motor_CCW();
   right_motor_CW();
   delay (5000);
@@ -108,6 +112,7 @@ void loop() {
   delay (1000);
 
   // Right Action
+  Serial.println ("Right Turn");
   left_motor_CW();
   right_motor_CCW();
   delay (5000);
